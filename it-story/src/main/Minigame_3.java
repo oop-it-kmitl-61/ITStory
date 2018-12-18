@@ -18,7 +18,6 @@ import javax.swing.JTextArea;
 
 public class Minigame_3 {
 
-    Font pixelMplus;
     JFrame window;
     Container con;
     JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel;
@@ -32,13 +31,11 @@ public class Minigame_3 {
 
     TitleScreenHandler tsHandler = new TitleScreenHandler();
     ChoiceHandler choiceHandler = new ChoiceHandler();
-
-    /*
-	public static void main(String[] args) {
-
-		new Minigame_3();
-	}
-     */
+/*
+    public static void main(String[] args) {
+        new Minigame_3();
+    }
+*/
     public Minigame_3() {
 
         try {

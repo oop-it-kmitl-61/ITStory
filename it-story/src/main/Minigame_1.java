@@ -18,7 +18,6 @@ import javax.swing.JTextArea;
 
 public class Minigame_1 {
 
-    Font pixelMplus;
     JFrame window;
     Container con;
     JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel;
@@ -30,12 +29,11 @@ public class Minigame_1 {
     JTextArea mainTextArea;
     int playerHP, monsterHP, silverRing;
     String weapon, position;
-
+    
     TitleScreenHandler tsHandler = new TitleScreenHandler();
     ChoiceHandler choiceHandler = new ChoiceHandler();
 
     public Minigame_1() {
-
         try {
             titleFont = Font.createFont(Font.TRUETYPE_FONT, new File("RD CHULAJARUEK.ttf")).deriveFont(50f);
             normalFont = Font.createFont(Font.TRUETYPE_FONT, new File("RD CHULAJARUEK.ttf")).deriveFont(30f);
@@ -83,7 +81,7 @@ public class Minigame_1 {
     }
 
     public void createGameScreen() {
-
+        
         titleNamePanel.setVisible(false);
         startButtonPanel.setVisible(false);
 

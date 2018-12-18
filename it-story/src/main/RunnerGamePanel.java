@@ -52,8 +52,8 @@ public class RunnerGamePanel extends JPanel {
     protected int score, newbackground, obstacleSpeed, index, heightOfJump, gamescore, pscore;
     private int bodysize_x = 200, bodysize_y = 200, x = 0, background = 0, yclass = 0;
     private int addarrow, arrow, clash = 0, clashx = 0, clashy = 0, first, second, changeHerocountdown;
-    private int minicount, spacecount, xmove, attackcount, attackstart, ymove, plascount, plasstart;
-    private int num1, numx, numy, numq, ranmove, ycount, xcount, anscorrect, coutcorrect;
+    private int minicount, spacecount, xmove, attackcount, attackstart, ymove, plascount, plasstart, arrow_select;
+    private int num1, numx, numy, numq, ranmove, ycount, xcount, anscorrect, coutcorrect,arrowy;
     private boolean newarrow, down, up, start, flag, isGameOver, jumpstart, quizstart;
     private int soundstart, soundcount, backgroundplas, changeHero, countdown;
     private Font pixelMplus;
@@ -255,6 +255,8 @@ public class RunnerGamePanel extends JPanel {
     }
 
     private void init() {
+        arrowy = 790;
+        arrow_select = 1;
         coutcorrect = 0;
         minicount = 0;
         num1 = 0;
@@ -270,7 +272,7 @@ public class RunnerGamePanel extends JPanel {
         jumpstart = false;
         soundstart = 0;
         changeHero = 0;
-        addarrow = 90;
+        addarrow = 95;
         arrow = 360;
         countdown = 0;
         newbackground = 0;
@@ -396,7 +398,7 @@ public class RunnerGamePanel extends JPanel {
         }
 
         if (newarrow == true) {
-            g.drawImage(image2.getImage(), 760, arrow + 50, 50, 70, this);
+            g.drawImage(image2.getImage(), arrowy, arrow + 50, 50, 70, this);
         }
 
         if (changeHero == 0) {
@@ -601,9 +603,6 @@ public class RunnerGamePanel extends JPanel {
                 }
                 obstacles.remove();
             }
-            if (background <= -40000) {
-
-            }
 
             if (isGameOver) {
                 System.out.println("overrrrrrr");
@@ -741,20 +740,36 @@ public class RunnerGamePanel extends JPanel {
                 sound.jump();
             }
             if (e.getExtendedKeyCode() == e.VK_UP) {
-                if (arrow == 450) {
+                
+                if(arrow_select >= 3){
                     arrow -= addarrow;
+                    arrowy = 830;
+                    arrow_select--;
+                    System.out.println("arrows : "+arrow_select);
                 }
-                if (arrow == 540) {
+                else if(arrow_select >= 2){
                     arrow -= addarrow;
+                    arrowy = 790;
+                    arrow_select--;
+                    System.out.println("arrows : "+arrow_select);
                 }
 
             } else if (e.getExtendedKeyCode() == e.VK_DOWN) {
-                if (arrow == 450) {
+                
+                if(arrow_select <= 1){
                     arrow += addarrow;
+                    arrowy = 830;
+                    arrow_select++;
+                    System.out.println("arrows : "+arrow_select);
                 }
-                if (arrow == 360) {
+                else if(arrow_select <= 2){
                     arrow += addarrow;
+                    arrowy = 860;
+                    arrow_select++;
+                    System.out.println("arrows : "+arrow_select);
                 }
+                
+                
                 if (jumpstart == true) {
                     down = true;
                 }
@@ -793,31 +808,39 @@ public class RunnerGamePanel extends JPanel {
             }
 
             if (e.getExtendedKeyCode() == e.VK_ENTER) {
-                if (newbackground == 3) {
+                if (newbackground == 2) {
+                    System.out.println("in 6333333333333333");
                     start = true;
+                    newbackground = 3;
                 }
                 if (newbackground == 1) {
                     newbackground = 2;
+                    System.out.println("in 2222222222222222");
                 }
-                if (newbackground == 2) {
-                    newbackground = 3;
-                }
-                if (arrow == 360) {
-                    arrow = 0;
-                    start = true;
-                    newbackground = 0;
-                    newarrow = false;
-                }
-                if (arrow == 450) {
+                
+                if (arrow_select == 2 && newarrow == true) {
                     arrow = 0;
                     newbackground = 1;
                     jumpstart = true;
                     newarrow = false;
+                    System.out.println("in 11111111111111111111111");
                     //addarrow = 0;
                 }
-                if (arrow == 540) {
+                if (arrow_select == 3 && newarrow == true) {
                     System.exit(0);
                 }
+                
+
+
+                if (arrow_select == 1) {
+                    arrow = 0;
+                    start = true;
+                    newbackground = 0;
+                    newarrow = false;
+                    
+                }
+                
+
 
                 if (background <= -42000) {
                     runnerTimer.stop();
