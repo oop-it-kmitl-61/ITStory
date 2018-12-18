@@ -448,7 +448,7 @@ public class RunnerGamePanel extends JPanel {
 
         //------------------------------------------------------------------------------------
         if ((background % 50) == 0 && plascount == 0 && background <= -1000) {
-            ycount = ((int) (Math.random() * (3)) * 100 + 500);
+            ycount = ((int) (Math.random() * (2)) * 100 + 500);
             plascount += 1;
             plasstart = 1;
         }
@@ -596,7 +596,7 @@ public class RunnerGamePanel extends JPanel {
                 obj1 obstacle = ((obj1) obstacles.getShape(obstacles.size() - 1));
                 if (1200 - obstacle.getX() == randomGapx) {
                     obstacles.add(new obj1(1400, yclass + 50));
-                    randomGapx = (int) (Math.random() * (2)) * 200 + 800;
+                    randomGapx = (int) (Math.random() * (2)) * 200 + 600;
                     yclass = (int) (Math.random() * (3)) * 200 + 400;
                     score++;
                     scoreLabel.setText("Score: " + gamescore);
@@ -610,7 +610,7 @@ public class RunnerGamePanel extends JPanel {
                 obstacleTimer.stop();
                 spacecount = 0;
 
-                //     int confirm = JOptionPane.showConfirmDialog(null, scoreLabel.getText() + "\n" + ""+quiz[num1], "Quiz", 0);
+                //int confirm = JOptionPane.showConfirmDialog(null, scoreLabel.getText() + "\n" + ""+quiz[num1], "Quiz", 0);
                 if (quizstart == false) {
                     num1++;
                 }
